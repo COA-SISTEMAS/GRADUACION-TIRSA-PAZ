@@ -1,0 +1,35 @@
+name: Apply provided graduation cap
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: "!contains(github.event.head_commit.message, 'chore: apply provided graduation cap')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Replace cap
+        env:
+          CAP_B64: "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"
+      - run: |
+          mkdir -p assets
+          echo "$CAP_B64" | base64 -d > assets/birrete-dorado-ticket.webp
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('index.html')
+          s=p.read_text(encoding='utf-8')
+          s=re.sub(r'\.cap\{.*?\.cap-tassel:after\{.*?\}', ".cap{width:38px;height:34px;position:relative;margin:0 auto 7px;background:url('assets/birrete-dorado-ticket.webp') center/contain no-repeat;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}.cap-top,.cap-base,.cap-tassel{display:none}", s, count=1, flags=re.S)
+          s=re.sub(r'<div class="cap" aria-hidden="true">.*?</div>', '<div class="cap" aria-hidden="true"></div>', s, count=1, flags=re.S)
+          p.write_text(s, encoding='utf-8')
+          PY
+          git config user.name 'COA-SISTEMAS'
+          git config user.email 'coasistemashn@gmail.com'
+          git add index.html assets/birrete-dorado-ticket.webp .github/workflows/apply-provided-cap.yml
+          git commit -m 'chore: apply provided graduation cap'
+          git push
